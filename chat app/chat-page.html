@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="div-top">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary ps-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="chat-container">
+        <div class="chat-sidebar">
+            <ul>
+                <li class="contact">
+                    <img src="https://via.placeholder.com/40" alt="User">
+                    <span>User 1</span>
+                </li>
+                <li class="contact">
+                    <img src="https://via.placeholder.com/40" alt="User">
+                    <span>User 2</span>
+                </li>
+                <li class="contact">
+                    <img src="https://via.placeholder.com/40" alt="User">
+                    <span>User 3</span>
+                </li>
+            </ul>
+        </div>
+        <div class="chat-main">
+            <div class="messages">
+                <div class="message received">Hello! How are you?</div>
+                <div class="message sent">I'm good, thank you!</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type a message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
