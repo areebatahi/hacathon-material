@@ -1,5 +1,5 @@
 import {
-    auth, createUserWithEmailAndPassword, db, setDoc, doc
+    auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, provider,getFirestore, db, setDoc, doc
 } from '/firebase.js'
 
 let signup = () => {
@@ -45,3 +45,55 @@ let signup = () => {
 }
 let signup_btn = document.getElementById('signup_btn');
 signup_btn.addEventListener('click', signup)
+
+// //----------------------- login ------------------------------
+let login = () => {
+    let email = document.getElementById('loginEmail').value;
+    let password = document.getElementById('loginPassword').value;
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            alert("Login successfully");
+            // window.location.pathname = "/login.html"
+        })
+        .catch((error) => {
+            console.log(error.code);
+        });
+}
+
+let login_btn = document.getElementById("login_btn");
+login_btn.addEventListener("click", login);
+
+
+//-------------------------- google Signup -------------------------
+let googleSignup = () => {
+    signInWithPopup(auth, provider)
+        .then(async (result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            console.log(user);
+            // window.location.pathname = "/dashboard/index.html"
+            try {
+                await setDoc(doc(db, "users", user.uid), {
+                    uid: user.uid,
+                    name: user.displayName,
+                    email: user.email,
+                    image: user.photoURL,
+                    number: user.phoneNumber
+                });
+                console.log("Document written with ID: ", user.uid);
+                // console.log(user.email,user.password);
+            }
+            catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        }).catch((error) => {
+            const email = error.customData.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            console.log(email, credential, error.code);
+        });
+}
+
+let googleBtn = document.getElementById('googleBtn');
+googleBtn.addEventListener('click', googleSignup);

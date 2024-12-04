@@ -112,13 +112,28 @@ body {
 .chat-input button:hover {
     background: #0BD953;
 }
-.col{
+
+.col {
     display: flex;
     align-items: center;
 }
-.div-top{
+
+.contact {
+    display: flex;
+    align-items: normal;
+    justify-content: left;
+}
+
+.div-top {
     color: #068131;
 }
-.div-top h2{
-font-weight: bolder;
+
+.div-top h2 {
+    font-weight: bolder;
+}
+
+.light {
+    font-weight: normal;
+    color: rgb(240, 240, 240);
+    font-size: smaller;
 }
